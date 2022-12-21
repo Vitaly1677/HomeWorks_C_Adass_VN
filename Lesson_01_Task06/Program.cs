@@ -9,12 +9,13 @@
 
 Console.Write("Введите число: ");
 int number = Convert.ToInt32(Console.ReadLine());
-if (number % 2 == 1)
+if (number % 2 != 0)
 {
-    Console.WriteLine($"Число {number} не четное.");
+    //Console.WriteLine($"Число {number} четное.");
+    Console.WriteLine($"Число: {number} - не четное.");
 }
 else 
 {
-    Console.WriteLine($"Число {number} четное.");
+    Console.WriteLine($"Число: {number} - четное.");
 }
 
