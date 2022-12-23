@@ -6,8 +6,7 @@
 // 918 -> 1
 
 Console.Write("Ведите число: ");
-int number = Convert.ToInt32(Console.Read());
-//int number = 782;
+int number = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine($"{number}  ->  {SecondNumberWrite(number)}");
 int SecondNumberWrite(int num)
 {
