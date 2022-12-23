@@ -5,10 +5,11 @@
 // 782 -> 8 
 // 918 -> 1
 
-Console.Write("Ведите число: ");
+Console.Write("Ведите 3-х значное число для отображения 2-ой цифры: ");
 int number = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine($"{number}  ->  {SecondNumberWrite(number)}");
+Console.WriteLine(SecondNumberWrite(number) != -1 ? $"{number}  ->  {SecondNumberWrite(number)}" : "Число не трехзначное.");
 int SecondNumberWrite(int num)
 {
-    return num / 10 - num / 100 * 10;
+    if (num <= 999 && num >= 100) return num / 10 % 10;
+    else return num = -1;
 }
