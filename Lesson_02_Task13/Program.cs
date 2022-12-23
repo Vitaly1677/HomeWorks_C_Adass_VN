@@ -7,7 +7,7 @@
 
 Console.Write("Введите число, для отображения 3-ей цифры: ");
 int number = Convert.ToInt32(Console.ReadLine());
-Console.Write(ThirdNumberWrite(number) != -1 ? $"{number} -> {ThirdNumberWrite(number)}" : "А третьей цифры то нет... :)");
+Console.Write(ThirdNumberWrite(number) != -1 ? $"{number} -> {ThirdNumberWrite(number)}" : "Ага, а третьей цифры то нет... :)");
 int ThirdNumberWrite(int num1)
 {
     if (num1 > 999)
