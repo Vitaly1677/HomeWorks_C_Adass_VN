@@ -7,18 +7,18 @@
 
 Console.Write("Введите число, для отображения 3-ей цифры: ");
 int number = Convert.ToInt32(Console.ReadLine());
-Console.Write(ThirdNumberWrite(number) != -1 ? $"{number} -> {ThirdNumberWrite(number)}" : "Ага, а третьей цифры то нет... :)");
+Console.Write(ThirdNumberWrite(number) != -1 ? $"{number} -> { Math.Abs(ThirdNumberWrite(number))}" : "Ага, а третьей цифры то нет... :)");
 int ThirdNumberWrite(int num1)
 {
-    if (num1 > 999)
+    if (num1 > 999 || num1 < -999)
     {
-        while (num1 > 999)
+        while (num1 > 999 || num1 < -999)
         {
             num1 = num1 / 10;
         }
-        return num1 % 10;
+        return  num1 % 10;
     }
-    else if (num1 > 99)
+    else if (num1 > 99 || num1 < -99)
     {
         return num1 % 10;
     }
@@ -26,6 +26,4 @@ int ThirdNumberWrite(int num1)
     {
         return -1;
     }
-
-
 }
