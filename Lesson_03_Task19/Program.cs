@@ -10,35 +10,21 @@
 
 Console.Write("Введите число, для проверки, является ли оно палиндромом: ");
 int number = Convert.ToInt32(Console.ReadLine());
-// int number = 12022;
-int numberLenght = number;
-int count = 5;
-while (count > 0)
+if (number / 10000 > 0 && number / 10000 < 10)
 {
-    numberLenght = numberLenght / 10;
-    count--;
+    Console.Write($"{number} -> ");
+    Console.WriteLine(PolyTest(number) ? "да" : "нет");
 }
-// Console.WriteLine($"ЧислоМое = {numberLenght}");
-if (numberLenght == 0)
-{
-Console.Write ($"{number} -> ");
-Console.WriteLine(PolyTest(number) ? "да":"нет");
-}
-else
-{
-    Console.WriteLine("Число не 5-и значное.");
-}
+else Console.WriteLine("Число не пятизначное.");
 
 bool PolyTest(int num)
 {
-int count = 0;
-int oldNum = num;
-int polyNum = 0;
-   
-    while (num > 0)
+    int tempNum = num;
+    int invertedNum = 0;
+    while (tempNum > 0)
     {
-        polyNum = polyNum * 10 + num % 10;
-        num = num / 10;
+        invertedNum = invertedNum * 10 + tempNum % 10;
+        tempNum = tempNum / 10;
     }
-return polyNum == oldNum;
+    return invertedNum == num;
 }
