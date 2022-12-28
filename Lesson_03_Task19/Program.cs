@@ -8,18 +8,37 @@
 // 12821 -> да
 // 23432 -> да
 
-Begin:
-Console.Write("Введите 5-и знач. число, для проверки, является ли оно палиндромом: ");
+Console.Write("Введите число, для проверки, является ли оно палиндромом: ");
 int number = Convert.ToInt32(Console.ReadLine());
-if (number < 10000 || number > 99999 ) 
+// int number = 12022;
+int numberLenght = number;
+int count = 5;
+while (count > 0)
 {
-    Console.WriteLine("Число не 5-и значное, повторите ввод.");
-    goto Begin;
+    numberLenght = numberLenght / 10;
+    count--;
 }
+// Console.WriteLine($"ЧислоМое = {numberLenght}");
+if (numberLenght == 0)
+{
 Console.Write ($"{number} -> ");
-Console.WriteLine(PolyTest(number) ?  "да" : "нет");
+Console.WriteLine(PolyTest(number) ? "да":"нет");
+}
+else
+{
+    Console.WriteLine("Число не 5-и значное.");
+}
 
 bool PolyTest(int num)
 {
-return  num / 1000 == num % 10 * 10 + number /10 % 10;
+int count = 0;
+int oldNum = num;
+int polyNum = 0;
+   
+    while (num > 0)
+    {
+        polyNum = polyNum * 10 + num % 10;
+        num = num / 10;
+    }
+return polyNum == oldNum;
 }
