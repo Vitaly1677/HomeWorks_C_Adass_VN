@@ -4,15 +4,20 @@
 // 456 -> 5 
 // 782 -> 8 
 // 918 -> 1
-begin:
+
 Console.Write("Ведите 3-х значное число для отображения 2-ой цифры: ");
 int number = Convert.ToInt32(Console.ReadLine());
-if ((number > 999 || number < 100) && (number > -100 || number < -999))
+if (number < 0) number = -number;
+
+if (number > 99 && number < 1000)
 {
-    Console.WriteLine("Введено не 3-х значное число, повторите ввод.");
-    goto begin;
+    Console.WriteLine($"{number}  ->  {SecondNumberWrite(number)}");
 }
-Console.WriteLine($"{number}  ->  {Math.Abs(SecondNumberWrite(number))}");
+else
+{
+    Console.WriteLine("Введено не 3-х значное число.");
+}
+
 int SecondNumberWrite(int num)
 {
     return num / 10 % 10;
