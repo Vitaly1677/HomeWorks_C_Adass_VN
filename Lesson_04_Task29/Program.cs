@@ -3,17 +3,18 @@
 // выводит их на экран.
 // 1, 2, 5, 7, 19, 6, 1, 33 -> [1, 2, 5, 7, 19, 6, 1, 33]
 
-int[] array = new int[8];
-FillArray(array);
-PrintArray(array);
 
-void FillArray(int[] arr)
+int[] array = CreateArray(8,0,100);
+PrintArray(array);
+int[] CreateArray(int size, int rndBegin, int rndEnd)
 {
+    int[] arr = new int[size];
     Random rnd = new Random();
     for (int i = 0; i < arr.Length; i++)
     {
-        arr[i] = rnd.Next(0, 100);
+        arr[i] = rnd.Next(rndBegin, rndEnd);
     }
+    return arr;
 }
 void PrintArray(int[] arr)
 {
