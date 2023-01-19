@@ -4,11 +4,10 @@
 // 3, 5 -> 243 (3⁵)
 // 2, 4 -> 16
 int[] array = new int[2];
-int calcExponent = 0;
 string calcError = "Число 2 не натуральное.";
 Console.WriteLine("Введите 2 числа для возведения 1-го в натуральную степень 2-го.");
 FillArray(array);
-calcExponent = CalcExponent(array);
+int calcExponent = CalcExponent(array);
 Console.WriteLine(calcExponent != -1 ? $"{array[0]}, {array[1]} -> {calcExponent}" : calcError);
 void FillArray(int[] arr)
 {
