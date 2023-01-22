@@ -22,5 +22,5 @@ void PrintArray(int[] arr)
         if (i != 0) Console.Write(", ");
         Console.Write(arr[i]);
     }
-    Console.Write("]");
+    Console.WriteLine("]");
 }
