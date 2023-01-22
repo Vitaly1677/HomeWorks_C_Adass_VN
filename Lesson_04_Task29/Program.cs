@@ -2,8 +2,6 @@
 // задаёт массив из 8 элементов и 
 // выводит их на экран.
 // 1, 2, 5, 7, 19, 6, 1, 33 -> [1, 2, 5, 7, 19, 6, 1, 33]
-
-
 int[] array = CreateArray(8,0,100);
 PrintArray(array);
 int[] CreateArray(int size, int rndBegin, int rndEnd)
