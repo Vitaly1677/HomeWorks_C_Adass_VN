@@ -26,7 +26,10 @@ else if (ChkParralel(k1, k2))
 }
 else
 {
-    Console.WriteLine($"b1 = {b1}, k1 = {k1}, b2 = {b2}, k2 = {k2} -> ({CalcX(b1, k1, b2, k2)}; {CalcY(b1, k1, b2, k2)})");
+    Console.Write($"b1 = {b1}, k1 = {k1}, b2 = {b2}, k2 = {k2} -> ");
+    Console.Write("{0,8:N3}", CalcX(b1, k1, b2, k2));
+    Console.Write("; ");
+    Console.WriteLine("{0,8:N3}", CalcY(b1, k1, b2, k2));
 }
 
 
