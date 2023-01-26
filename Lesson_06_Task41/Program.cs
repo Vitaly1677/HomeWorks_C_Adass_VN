@@ -26,12 +26,17 @@ int ReadIntNumder(string ParamName)
     return Convert.ToInt32(Console.ReadLine());
 }
 
+bool PositiveNumber(int num)
+{
+    return num > 0;
+}
+
 int CountPositiveNumbersArray(int[] arr)
 {
     int cou = 0;
     for (int i = 0; i < arr.Length; i++)
     {
-        if (arr[i]> 0) cou++;
+        if (PositiveNumber(arr[i])) cou++;
     }
     return cou;
 }
