@@ -9,13 +9,15 @@
 // столбца: 4,6; 5,6; 3,6; 3.
 
 int[,] array2D = CreateMatrixRndInt(3, 4, 1, 10);
-PrintArray(array2D);
-PrintArithmeticMeanColArray(array2D);
+PrintMatrix(array2D);
+double[] arithmeticMeanCol = CreateArrayArithmeticMeanCol(array2D);
+Console.WriteLine("Среднее арифметическое каждого столбца:");
+PrintArray(arithmeticMeanCol);
 
-void PrintArithmeticMeanColArray(int[,] matrix)
+double[] CreateArrayArithmeticMeanCol(int[,] matrix)
 {
+    double[] arr = new double[matrix.GetLength(1)];
     double num = 0;
-    Console.WriteLine("Ср. арифметическое элементов в столбцах: ");
     for (int i = 0; i < matrix.GetLength(1); i++)
     {
         for (int j = 0; j < matrix.GetLength(0); j++)
@@ -23,13 +25,13 @@ void PrintArithmeticMeanColArray(int[,] matrix)
             num += matrix[j, i];
         }
         num /= matrix.GetLength(0);
-        Console.Write("{0,6:N1}", num);        
+        arr[i] = num;
         num = 0;
-    }
-    Console.WriteLine("");
+    } 
+    return arr;
 }
 
-void PrintArray(int[,] matrix)
+void PrintMatrix(int[,] matrix)
 {
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
@@ -56,4 +58,13 @@ int[,] CreateMatrixRndInt(int rows, int column, int min, int max)
         }
     }
     return matrix;
+}
+
+void PrintArray(double[] arr)
+{
+    for (int i = 0; i < arr.Length; i++)
+    {
+    Console.Write("{0,6:N1}", arr[i]);
+    }
+    Console.WriteLine("");
 }
