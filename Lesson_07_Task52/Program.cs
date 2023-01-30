@@ -8,7 +8,7 @@
 // Среднее арифметическое каждого
 // столбца: 4,6; 5,6; 3,6; 3.
 
-int[,] array2D = CreateMatrixRndInt(4, 3, 1, 10);
+int[,] array2D = CreateMatrixRndInt(3, 4, 1, 10);
 PrintArray(array2D);
 PrintArithmeticMeanColArray(array2D);
 
