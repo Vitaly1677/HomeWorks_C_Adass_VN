@@ -8,21 +8,25 @@
 // Среднее арифметическое каждого
 // столбца: 4,6; 5,6; 3,6; 3.
 
-int[,] array2D = CreateMatrixRndInt(5, 4, 1, 10);
+int[,] array2D = CreateMatrixRndInt(4, 3, 1, 10);
 PrintArray(array2D);
+PrintArithmeticMeanColArray(array2D);
 
 void PrintArithmeticMeanColArray(int[,] matrix)
 {
-    for (int i = 0; i < matrix.GetLength(0); i++)
+    double num = 0;
+    Console.WriteLine("Ср. арифметическое элементов в столбцах: ");
+    for (int i = 0; i < matrix.GetLength(1); i++)
     {
-        Console.Write("[");
-        for (int j = 0; j < matrix.GetLength(1); j++)
+        for (int j = 0; j < matrix.GetLength(0); j++)
         {
-            if (j < matrix.GetLength(1) - 1) Console.Write($"{matrix[i, j], 5},");
-            else Console.Write($"{matrix[i, j], 5}  ");
+            num += matrix[j, i];
         }
-        Console.WriteLine("]");
+        num /= matrix.GetLength(0);
+        Console.Write("{0,6:N1}", num);        
+        num = 0;
     }
+    Console.WriteLine("");
 }
 
 void PrintArray(int[,] matrix)
@@ -32,8 +36,8 @@ void PrintArray(int[,] matrix)
         Console.Write("[");
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            if (j < matrix.GetLength(1) - 1) Console.Write($"{matrix[i, j], 5},");
-            else Console.Write($"{matrix[i, j], 5}  ");
+            if (j < matrix.GetLength(1) - 1) Console.Write($"{matrix[i, j],5},");
+            else Console.Write($"{matrix[i, j],5}  ");
         }
         Console.WriteLine("]");
     }
