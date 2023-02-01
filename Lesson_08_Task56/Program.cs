@@ -2,30 +2,49 @@
 // программу, которая будет находить строку с наименьшей суммой элементов.
 
 
-int[,] matrix = CreateMatrixRndInt(4, 4, 1, 10);
+int[,] matrix = CreateMatrixRndInt(4, 4, -10, 10);
+int[] arraySumNumRowsMatrix = CreateArraySumNumRowsMatrix(matrix);
 Console.WriteLine("Исходная матрица:");
 PrintMatrix(matrix);
 Console.WriteLine("");
-Console.WriteLine("Упорядоченная матрица:");
+Console.Write("Сумма элементов строк матрицы :");
+PrintArray(arraySumNumRowsMatrix);
+int minSumNumRowsMatrix = MinNumArray(arraySumNumRowsMatrix);
+Console.WriteLine("Индекс строки с наименьшей суммой элементов = " + minSumNumRowsMatrix);
 
-
-PrintMatrix(matrix);
-
-int[,] SortRowsMatrix(int[,] matrix, int rows)
+int MinNumArray(int[] array)
 {
-    for (int i = 0; i < matrix.GetLength(1); i++)
+    int min = array[0];
+    int index =0;
+    for (int i = 1; i < array.Length; i++)
     {
-        for (int j = 0; j < matrix.GetLength(1) - 1; j++)
+        if (min > array[i]) 
         {
-            if (matrix[rows, j] < matrix[rows, j + 1])
-            {
-                int temp = matrix[rows, j];
-                matrix[rows, j] = matrix[rows, j + 1];
-                matrix[rows, j + 1] = temp;
-            }
+        min = array[i];
+        index = i;
         }
     }
-    return matrix;
+    return index;
+}
+
+int[] CreateArraySumNumRowsMatrix (int[,] matrix)
+{
+    int[] array = new int[matrix.GetLength(0)];
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        array[i] = SumNumRowsMatrix(matrix, i);
+    }
+    return array;
+}
+
+int SumNumRowsMatrix(int[,] matrix, int rows)
+{
+    int sum = 0;
+    for (int j = 0; j < matrix.GetLength(1); j++)
+    {
+    sum += matrix[rows, j];
+    }
+return sum;
 }
 
 void PrintMatrix(int[,] matrix)
@@ -55,4 +74,15 @@ int[,] CreateMatrixRndInt(int rows, int column, int min, int max)
         }
     }
     return matrix;
+}
+
+void PrintArray(int[] arr)
+{
+    Console.Write("[ ");
+    for (int i = 0; i < arr.Length; i++)
+    {
+        Console.Write(arr[i]);
+        if (i < arr.Length - 1) Console.Write(", ");
+    }
+    Console.WriteLine(" ]");
 }
