@@ -5,12 +5,11 @@ int[,] matrix = CreateMatrixRndInt(4, 4, 1, 10);
 Console.WriteLine("Исходная матрица:");
 PrintMatrix(matrix);
 Console.WriteLine("");
-Console.WriteLine("Упорядоченная матрица:");
 for (int i = 0; i < matrix.GetLength(0); i++)
 {
     matrix = SortRowsMatrix(matrix, i);
 }
-
+Console.WriteLine("Упорядоченная матрица:");
 PrintMatrix(matrix);
 
 int[,] SortRowsMatrix(int[,] matrix, int rows)
