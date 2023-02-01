@@ -15,8 +15,8 @@
 // [   19,   22  ]
 // [   43,   50  ]
 
-// int[,] matrixA = CreateMatrixRndInt(2, 2, 1, 9);
-// int[,] matrixB = CreateMatrixRndInt(2, 1, 1, 9);
+int[,] matrixA = CreateMatrixRndInt(2, 2, 1, 9);
+int[,] matrixB = CreateMatrixRndInt(2, 1, 1, 9);
 int[,] matrixC = MultipliMatrix(matrixA, matrixB);
 
 Console.WriteLine("Матрица А");
