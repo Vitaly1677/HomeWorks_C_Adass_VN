@@ -1,7 +1,7 @@
 ﻿// Задача 58: Задайте две матрицы. Напишите программу, которая будет
 // находить произведение двух матриц.
-// Матрицу P можно умножить на матрицу K только в том случае, 
-// если число столбцов матрицы P равняется числу строк матрицы K.
+// Матрицу A можно умножить на матрицу B только в том случае, 
+// если число столбцов матрицы A равняется числу строк матрицы B.
 //Для проверки 1
 // int[,] matrixA = new int[,] { { 15, 27 }, { 18, 10 } };
 // int[,] matrixB = new int[,] { { 35 }, { 16 } };
@@ -15,16 +15,40 @@
 // [   19,   22  ]
 // [   43,   50  ]
 
-int[,] matrixA = CreateMatrixRndInt(2, 2, 1, 9);
-int[,] matrixB = CreateMatrixRndInt(2, 1, 1, 9);
+Begin:
+int rowMatrixA = ReadMatrixParam("Матрица А, количество строк: ");
+int colMatrixA = ReadMatrixParam("Матрица А, количество столбцов: ");
+int rowMatrixB = ReadMatrixParam("Матрица B, количество строк: ");
+int colMatrixB = ReadMatrixParam("Матрица B, количество столбцов: ");
+if (colMatrixA != rowMatrixB) {
+    Console.WriteLine("Ошибка. Кол-во столб. матрицы А не равно стр. матрицы В, повторите ввод, для выхода Ctrl C");
+    goto Begin; }
+
+int[,] matrixA = CreateMatrixRndInt(rowMatrixA, colMatrixA, 1, 9);
+int[,] matrixB = CreateMatrixRndInt(rowMatrixB, colMatrixB, 1, 9);
 int[,] matrixC = MultipliMatrix(matrixA, matrixB);
 
-Console.WriteLine("Матрица А");
-PrintMatrix(matrixA);
-Console.WriteLine("Матрица B");
-PrintMatrix(matrixB);
-Console.WriteLine("Матрица C");
-PrintMatrix(matrixC);
+PrintMatrix(matrixA, "Матрица B");
+PrintMatrix(matrixB, "Матрица B");
+PrintMatrix(matrixC, "Матрица C (результат умножения Матрицы A на Матрицу В)");
+
+int ReadMatrixParam(string name)
+{
+    int num = 0;
+    do
+    {
+        num = (ReadIntNumder(name));
+        if (num <= 0) Console.WriteLine("Введено число <= 0, повторите ввод, для выхода Ctr C");
+    }
+    while (num <= 0);
+    return num;
+}
+
+int ReadIntNumder(string name)
+{
+    Console.Write(name);
+    return Convert.ToInt32(Console.ReadLine());
+}
 
 int[,] MultipliMatrix(int[,] a, int[,] b)
 {
@@ -59,16 +83,18 @@ int[,] CreateMatrixRndInt(int rows, int column, int min, int max)
     return matrix;
 }
 
-void PrintMatrix(int[,] matrix)
+void PrintMatrix(int[,] matrix, string name)
 {
+    Console.WriteLine(name);
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         Console.Write("[");
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            if (j < matrix.GetLength(1) - 1) Console.Write($"{matrix[i, j],5},");
-            else Console.Write($"{matrix[i, j],5}  ");
+            Console.Write($"{matrix[i, j],4}");
+            if (j < matrix.GetLength(1) - 1) Console.Write(",");
+            
         }
-        Console.WriteLine("]");
+        Console.WriteLine(" ]");
     }
 }
