@@ -1,4 +1,4 @@
-﻿// Задача 60: Сформируйте трёхмерный массив из 
+﻿// Задача 60: Сформируйте трёхмерный массив из неповторяющихся
 // двузначных чисел. Напишите программу, которая будет построчно выводить
 // массив, добавляя индексы каждого элемента.
 
@@ -13,12 +13,9 @@ if (rowArray3D*colArray3D*depArray3D > 90)
     Console.WriteLine("");
     goto Begin;
 }
-
 int[,,] array3D = CreateArray3DRndInt(rowArray3D, colArray3D, depArray3D, 10, 99);
 Console.WriteLine("Tрёхмерный массив из неповторяющихся двузначных чисел");
 PrintArray3D(array3D);
-
-
 int[] CreateArrayUnicInt(int min, int max)
 {
     int arrSize = max - min + 1;
@@ -44,10 +41,8 @@ int[] MixArrayInt(int[] arr)
 }
 int[,,] CreateArray3DRndInt(int rows, int column, int dep, int min, int max)
 {
-
     int[] arr = CreateArrayUnicInt(min, max);
     arr = MixArrayInt(arr);
-
     int[,,] arr3D = new int[rows, column, dep];
     int r = 0;
     for (int i = 0; i < arr3D.GetLength(0); i++)
@@ -59,12 +54,10 @@ int[,,] CreateArray3DRndInt(int rows, int column, int dep, int min, int max)
                 arr3D[i, j, k] = arr[r];
                 r++;
             }
-
         }
     }
     return arr3D;
 }
-
 void PrintArray3D(int[,,] arr3D)
 {
     Console.Write("[ ");
@@ -99,7 +92,6 @@ int ReadMatrixParam(string name)
     while (num <= 0);
     return num;
 }
-
 int ReadIntNumder(string name)
 {
     Console.Write(name);
