@@ -1,10 +1,24 @@
-﻿// Задача 60: Сформируйте трёхмерный массив из неповторяющихся
+﻿// Задача 60: Сформируйте трёхмерный массив из 
 // двузначных чисел. Напишите программу, которая будет построчно выводить
 // массив, добавляя индексы каждого элемента.
 
-int[,,] array3D = CreateArray3DRndInt(3, 3, 3, 10, 99);
+Begin:
+Console.WriteLine("Введите данные для заполнения трехмерной матрицы неповторяющимися двузначными числами.");
+int rowArray3D = ReadMatrixParam("Матрица 3D, строки: ");
+int colArray3D = ReadMatrixParam("Матрица 3D, столбцы: ");
+int depArray3D = ReadMatrixParam("Матрица 3D, глубина: ");
+if (rowArray3D*colArray3D*depArray3D > 90)
+{
+    Console.WriteLine("Ошибка. Слишком большая матрица, повторите ввод, для выхода Ctrl C");
+    Console.WriteLine("");
+    goto Begin;
+}
+
+int[,,] array3D = CreateArray3DRndInt(rowArray3D, colArray3D, depArray3D, 10, 99);
 Console.WriteLine("Tрёхмерный массив из неповторяющихся двузначных чисел");
 PrintArray3D(array3D);
+
+
 int[] CreateArrayUnicInt(int min, int max)
 {
     int arrSize = max - min + 1;
@@ -28,13 +42,13 @@ int[] MixArrayInt(int[] arr)
     }
     return arr;
 }
-int[,,] CreateArray3DRndInt(int rows, int column, int dim, int min, int max)
+int[,,] CreateArray3DRndInt(int rows, int column, int dep, int min, int max)
 {
 
     int[] arr = CreateArrayUnicInt(min, max);
     arr = MixArrayInt(arr);
 
-    int[,,] arr3D = new int[rows, column, dim];
+    int[,,] arr3D = new int[rows, column, dep];
     int r = 0;
     for (int i = 0; i < arr3D.GetLength(0); i++)
     {
@@ -74,4 +88,20 @@ Console.WriteLine(" ]");
         }
     }
 }
+int ReadMatrixParam(string name)
+{
+    int num = 0;
+    do
+    {
+        num = (ReadIntNumder(name));
+        if (num <= 0) Console.WriteLine("Введено число <= 0, повторите ввод, для выхода Ctr C");
+    }
+    while (num <= 0);
+    return num;
+}
 
+int ReadIntNumder(string name)
+{
+    Console.Write(name);
+    return Convert.ToInt32(Console.ReadLine());
+}
