@@ -2,76 +2,76 @@
 // двузначных чисел. Напишите программу, которая будет построчно выводить
 // массив, добавляя индексы каждого элемента.
 
-int[,] array3D = CreateArray3DRndInt(4,4,10,99);
-PrintMatrix(array3D,"Массив");
-
+int[,,] array3D = CreateArray3DRndInt(3, 3, 3, 10, 99);
+Console.WriteLine("Tрёхмерный массив из неповторяющихся двузначных чисел");
+PrintArray3D(array3D);
 int[] CreateArrayUnicInt(int min, int max)
 {
-    int arrSize = max-min+1;
+    int arrSize = max - min + 1;
     int[] arr = new int[arrSize];
     for (int i = 0; i < arrSize; i++)
     {
-        arr[i] = i+min;
+        arr[i] = i + min;
     }
     return arr;
 }
-
 int[] MixArrayInt(int[] arr)
 {
-int arrSize = arr.Length;
-Random rnd = new Random();
+    int arrSize = arr.Length;
+    Random rnd = new Random();
     for (int i = 0; i < arrSize; i++)
     {
-        int j = rnd.Next(0,arrSize);
+        int j = rnd.Next(0, arrSize);
         int temp = arr[j];
         arr[j] = arr[i];
         arr[i] = temp;
     }
-    PrintArray(arr);
     return arr;
 }
-
-int[,] CreateArray3DRndInt(int rows, int column, int min, int max)
+int[,,] CreateArray3DRndInt(int rows, int column, int dim, int min, int max)
 {
-    
-    int[] arr = CreateArrayUnicInt(min,max);
+
+    int[] arr = CreateArrayUnicInt(min, max);
     arr = MixArrayInt(arr);
 
-    int[,] arr3D = new int[rows, column];
+    int[,,] arr3D = new int[rows, column, dim];
     int r = 0;
     for (int i = 0; i < arr3D.GetLength(0); i++)
     {
         for (int j = 0; j < arr3D.GetLength(1); j++)
         {
-            arr3D[i, j] = arr[r];
-            r++;
+            for (int k = 0; k < arr3D.GetLength(2); k++)
+            {
+                arr3D[i, j, k] = arr[r];
+                r++;
+            }
+
         }
     }
     return arr3D;
 }
 
-void PrintMatrix(int[,] arr3D, string name)
+void PrintArray3D(int[,,] arr3D)
 {
-    Console.WriteLine(name);
+    Console.Write("[ ");
+    for (int i = 0; i < arr3D.GetLength(2); i++)
+    {
+        Console.Write("i, j, k,  N");
+        if (i < arr3D.GetLength(2) - 1) Console.Write("; ");
+    }
+Console.WriteLine(" ]");
     for (int i = 0; i < arr3D.GetLength(0); i++)
     {
-        Console.Write("[");
         for (int j = 0; j < arr3D.GetLength(1); j++)
         {
-            Console.Write($"{arr3D[i, j],4}");
-            if (j < arr3D.GetLength(1) - 1) Console.Write(",");
-
+            Console.Write("[ ");
+            for (int k = 0; k < arr3D.GetLength(2); k++)
+            {
+                Console.Write($"{i}, {j}, {k}, {arr3D[i, j, k]}");
+                if (k < arr3D.GetLength(2) - 1) Console.Write("; ");
+            }
+            Console.WriteLine(" ]");
         }
-        Console.WriteLine(" ]");
     }
 }
-void PrintArray(int[] arr)
-{
-    Console.Write("[");
-    for (int i = 0; i < arr.Length; i++)
-    {
-        Console.Write(i+"_"+arr[i]);
-        if (i < arr.Length - 1) Console.Write(", ");
-    }
-    Console.WriteLine("]");
-}
+
