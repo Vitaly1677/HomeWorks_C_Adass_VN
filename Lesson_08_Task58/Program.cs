@@ -16,19 +16,22 @@
 // [   43,   50  ]
 
 Begin:
-int rowMatrixA = ReadMatrixParam("Матрица А, количество строк: ");
-int colMatrixA = ReadMatrixParam("Матрица А, количество столбцов: ");
-int rowMatrixB = ReadMatrixParam("Матрица B, количество строк: ");
-int colMatrixB = ReadMatrixParam("Матрица B, количество столбцов: ");
-if (colMatrixA != rowMatrixB) {
+Console.WriteLine("Введите данные для умножения матриц.");
+int rowMatrixA = ReadMatrixParam("Матрица А, кол-во строк: ");
+int colMatrixA = ReadMatrixParam("Матрица А, кол-во столбцов: ");
+int rowMatrixB = ReadMatrixParam("Матрица B, кол-во строк: ");
+int colMatrixB = ReadMatrixParam("Матрица B, кол-во столбцов: ");
+if (colMatrixA != rowMatrixB)
+{
     Console.WriteLine("Ошибка. Кол-во столб. матрицы А не равно стр. матрицы В, повторите ввод, для выхода Ctrl C");
-    goto Begin; }
+    goto Begin;
+}
 
 int[,] matrixA = CreateMatrixRndInt(rowMatrixA, colMatrixA, 1, 9);
 int[,] matrixB = CreateMatrixRndInt(rowMatrixB, colMatrixB, 1, 9);
 int[,] matrixC = MultipliMatrix(matrixA, matrixB);
 
-PrintMatrix(matrixA, "Матрица B");
+PrintMatrix(matrixA, "Матрица А");
 PrintMatrix(matrixB, "Матрица B");
 PrintMatrix(matrixC, "Матрица C (результат умножения Матрицы A на Матрицу В)");
 
@@ -55,7 +58,7 @@ int[,] MultipliMatrix(int[,] a, int[,] b)
     int nCount = a.GetLength(1);
     int iCount = a.GetLength(0);
     int jCount = b.GetLength(1);
-    int[,] c = new int[a.GetLength(0), b.GetLength(1)];
+    int[,] c = new int[iCount, jCount];
     for (int j = 0; j < jCount; j++)
     {
         for (int i = 0; i < iCount; i++)
@@ -93,7 +96,7 @@ void PrintMatrix(int[,] matrix, string name)
         {
             Console.Write($"{matrix[i, j],4}");
             if (j < matrix.GetLength(1) - 1) Console.Write(",");
-            
+
         }
         Console.WriteLine(" ]");
     }
