@@ -8,12 +8,12 @@ int numberM = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите число N: ");
 int numberN = Convert.ToInt32(Console.ReadLine());
 
-if (numberN > 0)
+if (numberM > 0 && numberN > 0)
 {
     Console.Write("M = " + numberM + "; N = " + numberN + " -> ");
     Console.WriteLine(NaturalNumbersRangeSum(numberM, numberN));
 }
-else Console.WriteLine("Число должно быть больше 0");
+else Console.WriteLine("Числа M и N должны быть больше 0.");
 
 int NaturalNumbersRangeSum(int numM, int numN)
 {
